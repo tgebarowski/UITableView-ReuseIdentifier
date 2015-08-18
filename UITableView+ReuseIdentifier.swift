@@ -57,7 +57,7 @@ extension UITableView {
         }
     }
 
-    func registerNib<T: UITableViewCell where T: Reusable>(aNib: UINib, aClass: T.Type, type: Type) {
+    func registerNib<T: UIView where T: Reusable>(aNib: UINib, aClass: T.Type, type: Type) {
         switch (type) {
         case .Cell:
             registerNib(aNib, forCellReuseIdentifier: T.reuseIdentifier)
@@ -66,7 +66,7 @@ extension UITableView {
         }
     }
 
-    func dequeueReusableCell<T: UITableViewCell where T: Reusable>(aClass: T.Type, type: Type) -> T {
+    func dequeueReusableCell<T: UIView where T: Reusable>(aClass: T.Type, type: Type) -> T {
         switch (type) {
         case .Cell:
             return dequeueReusableCellWithIdentifier(T.reuseIdentifier) as! T
